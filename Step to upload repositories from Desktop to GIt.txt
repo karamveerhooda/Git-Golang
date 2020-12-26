@@ -1,0 +1,97 @@
+/*Step -1 - Install Git bash in your local machine and open the bash from your code repositories
+ then Authentication , Generate SSH keys*/
+karam@radi-laptop MINGW64 ~/GOLANG/goworkspace/src/github.com/GoesToEleven/GolangTraining (master)
+$ ssh-keygen -t rsa -b 4096 -C "karamveer.hooda@gmail.com"
+Generating public/private rsa key pair.
+/*Enter any password but remember it*/
+Enter file in which to save the key (/c/Users/karam/.ssh/id_rsa):
+/c/Users/karam/.ssh/id_rsa already exists.
+Overwrite (y/n)? y
+/*Enter password that you type above*/
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in /c/Users/karam/.ssh/id_rsa
+Your public key has been saved in /c/Users/karam/.ssh/id_rsa.pub
+The key fingerprint is:
+SHA256:K8LazWlIPQWuyNw8SgB7NZS13nC3Hrf78HcyuFce8lQ karamveer.hooda@gmail.com
+The key's randomart image is:
++---[RSA 4096]----+
+|   ..o.          |
+|.   + ..         |
+|.. . oo.. .      |
+|o .  ..+.. .    E|
+| = + o..S o .   .|
+|  =.* o  o o o o.|
+| . ooo... . o.+o.|
+|  .o.+.o    .++.+|
+|  . ..+     o+o+.|
++----[SHA256]-----+
+/*Step -2 - to check SSH agent is running , use this command*/
+karam@radi-laptop MINGW64 ~/GOLANG/goworkspace/src/github.com/GoesToEleven/GolangTraining (master)
+$ eval $(ssh-agent -s)
+Agent pid 741
+/*Step -3 Now add your private keys to SSH agent*/
+karam@radi-laptop MINGW64 ~/GOLANG/goworkspace/src/github.com/GoesToEleven/GolangTraining (master)
+$ ssh-add ~/.ssh/id_rsa
+/*Enter password above step 1*/
+Enter passphrase for /c/Users/karam/.ssh/id_rsa:
+Identity added: /c/Users/karam/.ssh/id_rsa (karamveer.hooda@gmail.com)
+/*Step -4 Adding public key to your Github account copying public key by running this command */
+karam@radi-laptop MINGW64 ~/GOLANG/goworkspace/src/github.com/GoesToEleven/GolangTraining (master)
+$ clip < ~/.ssh/id_rsa.pub
+/*Step - 5 Go to your Github account , go to profile and click SSH and GPG keys , 
+Give a title and paste your key and add ssh keys
+All above steps only have to be done once for your system.
+Step - 6 Now Create a repositories in Github
+Step - 7 Now open your Gitbash in Code repositories and initialize git*/
+karam@radi-laptop MINGW64 ~/GOLANG/goworkspace/src/github.com/GoesToEleven/GolangTraining (master)
+$ git init
+Reinitialized existing Git repository in C:/Users/karam/GOLANG/goworkspace/src/g
+ithub.com/GoesToEleven/GolangTraining/.git/
+/*Step 8 - Add all content */
+karam@radi-laptop MINGW64 ~/GOLANG/goworkspace/src/github.com/GoesToEleven/GolangTraining (master)
+$ git add .
+/*Step - 9 Now to commit all the code locally use below command but this is not working here as 
+nothing to commit*/
+karam@radi-laptop MINGW64 ~/GOLANG/goworkspace/src/github.com/GoesToEleven/GolangTraining (master)
+$ git commit -m "first git commit"
+On branch master
+Your branch is ahead of 'origin/master' by 1 commit.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+/*Step-10 As per this step if you are doing first time then it will work otherwise skip step 10*/
+karam@radi-laptop MINGW64 ~/GOLANG/goworkspace/src/github.com/GoesToEleven/GolangTraining (master)
+$ git remote add origin git@github.com:karamveerhooda/Git-Golang.git
+fatal: remote origin already exists.
+    --tags                import all tags and associated objects when fetching
+                          or do not fetch any tag at all (--no-tags)                -t, --track <branch>  branch(es) to track
+    -m, --master <branch>
+                          master branch
+    --mirror[=(push|fetch)]
+                          set up remote as a mirror to push to or fetch from
+
+/*Step -11 To remove step 10 error use below command and the explanation is at
+https://stackoverflow.com/questions/10904339/github-fatal-remote-origin-already-exists/10904450#10904450  */
+karam@radi-laptop MINGW64 ~/GOLANG/goworkspace/src/github.com/GoesToEleven/Golan
+gTraining (master)
+$  git remote set-url origin git@github.com:karamveerhooda/Git-Golang.git
+
+/* Step - 12 To push code in Git repositories*/
+karam@radi-laptop MINGW64 ~/GOLANG/goworkspace/src/github.com/GoesToEleven/GolangTraining (master)
+$ git push origin master
+The authenticity of host 'github.com (13.234.210.38)' can't be established.
+RSA key fingerprint is SHA256:nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added 'github.com,13.234.210.38' (RSA) to the list of known
+ hosts.
+Enumerating objects: 6770, done.
+Counting objects: 100% (6770/6770), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (3322/3322), done.
+Writing objects: 100% (6770/6770), 40.73 MiB | 229.00 KiB/s, done.
+Total 6770 (delta 1737), reused 6549 (delta 1726), pack-reused 0
+remote: Resolving deltas: 100% (1737/1737), done.
+To github.com:karamveerhooda/Git-Golang.git                                      * [new branch]      master -> master
+
+karam@radi-laptop MINGW64 ~/GOLANG/goworkspace/src/github.com/GoesToEleven/GolangTraining (master)                                                              $ ^C
