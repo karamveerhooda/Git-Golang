@@ -1,0 +1,46 @@
+1. Revisit CALLBACK
+2. Revisit Method Set
+3. Channel - Channel are types which were used in case of hand to hand send and receive happen, like a atomic transcation.
+             Declaration: item := make(chan int)  - This is bidirectional Channel, it can send and recieve value.
+                                  make(<-chan int, buffer) - buffer indicates number of item channel can wait to receive the item
+                                  make(chan<- int)- this is send channel declaration,  
+                                  make(<-chan int) - This is receive channel declaration.
+             channels blocks instantly if their value will not be taken by receiver.
+4. Do the channel activity with struct to display value before sending it.              
+5. Check the channel exercise : 
+6. Revise Context again.
+7. Revise Error topic again
+8. Interface type:Interface type is any other normal type like int. In example Ninja11->Ninja3
+                   func (ce customeErr) Error() string {
+                    	return "wtf"
+                    }
+                    Here we are using builtin.Error() (builtin is package and Error() is the only method of interface )
+                    And here error is the name of Interface, below is the golang snippet of error interface:
+                    type error interface {
+                          Error() string
+                    }
+                    So if anyone want to call implement error interface, he have to implement its only method Error()
+9. go doc  --> command gives you first commented lines in current program that you are in.
+10. Using this command you can go locally in your machine for Go DOC:
+      godoc -http:8080 
+      - If above command doesn't work than use "go get golang.org/x/tools/cmd/godoc"
+11.Testing: 
+      Testing in Go, Three Takeaways
+      1. Name of testing file should be in same package as of main program
+      2. The test should be in file with name _test.go
+      3. Tests must be in a func with name Testxxx(t *testing.t)
+      4. The name of test method in _test.go file should be like this:
+            TestMysum , if you give Testmysum it will give testing: warning: no tests to run    
+      5. To test test file command is : go test      
+*/
+11.1 Command to run 8080 server in Go from command prompt:
+            godoc -http=:8080
+11.2 Command to run benchmark in GO from command prompt     
+            go test -bench .  (. means all)      
+11.3 Command to sepecify the identifier use command:
+           example :  go test -bench Greet
+12. Coverage : Coverage means how much code is covered in testing
+13. You have the site that can show rough estimates of GO program execution
+    speed compared to other language. 
+    https://benchmarksgame-team.pages.debian.net/benchmarksgame/index.html
+14.       
